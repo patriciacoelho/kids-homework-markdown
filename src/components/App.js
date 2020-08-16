@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import SplitPane from 'react-split-pane';
 import ReactMarkdown from 'react-markdown';
-import './App.css';
+import '../style/App.css';
 
-import EditorPane from './components/EditorPane';
+import EditorPane from './EditorPane';
 
 class App extends Component {
   constructor() {
