@@ -16,6 +16,9 @@ You will also see any lint errors in the console.
 Runs the app in an window instead the browser.
 In development mode is required `npm start` is running
 
+### `npm run electron-dev`
+You could also just run this command which runs `npm start` and `electron .` concurrently
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
