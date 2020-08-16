@@ -6,6 +6,10 @@
   "homepage": "./",
   "build": {
     "appId": "kids.homework.markdown",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "directories": {
       "buildResources": "assets"
     },
@@ -34,7 +38,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
-    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "electron-builder --dir",
+    "electron-dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "eslintConfig": {
     "extends": "react-app"
