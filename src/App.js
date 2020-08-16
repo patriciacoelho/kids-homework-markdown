@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import SplitPane from 'react-split-pane';
+import ReactMarkdown from 'react-markdown';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import EditorPane from './components/EditorPane';
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+        markdownSrc: '',
+    };
+  }
+
+  updateMarkdown(value) {
+      this.setState({markdownSrc: value});
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <SplitPane
+          split="vertical"
+          defaultSize="50%"
+          minSize="370"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <div className="editor-pane">
+            <EditorPane handleMarkdown={this.updateMarkdown.bind(this)} />
+          </div>
+          <div className="view-pane">
+            <ReactMarkdown source={this.state.markdownSrc}/>
+          </div>
+        </SplitPane>
+      </div>
+    );
+  }
 }
 
 export default App;
