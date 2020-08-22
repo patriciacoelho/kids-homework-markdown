@@ -5,6 +5,7 @@ import '../style/App.css';
 
 import EditorPane from './EditorPane';
 import ImportFromFile from './ImportFromFile';
+import SaveFile from './SaveFile';
 
 class App extends Component {
   constructor() {
@@ -12,22 +13,25 @@ class App extends Component {
     this.state = {
         markdownSrc: '',
         loadedSrc: '',
+        fileName: 'file',
     };
   }
 
   updateMarkdown(value) {
-      this.setState({markdownSrc: value});
+      this.setState({ markdownSrc: value });
   }
 
-  handleFileRead(e) {
+  handleFileRead(e, fileName) {
     const content = e.srcElement.result;
-    this.setState({loadedSrc: content});
+    this.setState({ fileName: fileName });
+    this.setState({ loadedSrc: content });
 }
 
   render() {
     return (
       <div className='App'>
         <ImportFromFile handleFileRead={this.handleFileRead.bind(this)}/>
+        <SaveFile fileName={this.state.fileName} fileContent={this.state.markdownSrc} />
         <SplitPane
           split='vertical'
           defaultSize='50%'
