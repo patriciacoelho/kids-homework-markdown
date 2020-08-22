@@ -20,9 +20,6 @@ class EditorPane extends Component {
         }
     }
 
-    handleLoadedValue() {
-    }
-
     render() {
         let handleMarkdown = this.props.handleMarkdown;
 
