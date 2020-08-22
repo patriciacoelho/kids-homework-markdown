@@ -6,6 +6,7 @@ import '../style/App.css';
 import EditorPane from './EditorPane';
 import ImportFromFile from './ImportFromFile';
 import SaveFile from './SaveFile';
+import ExportFile from './ExportFile';
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends Component {
         loadedSrc: '',
         fileName: 'file',
     };
+    this.printableZone = React.createRef();
   }
 
   updateMarkdown(value) {
@@ -32,6 +34,7 @@ class App extends Component {
       <div className='App'>
         <ImportFromFile handleFileRead={this.handleFileRead.bind(this)}/>
         <SaveFile fileName={this.state.fileName} fileContent={this.state.markdownSrc} />
+        <ExportFile fileName={this.state.fileName} printableZone={this.printableZone.current} />
         <SplitPane
           split='vertical'
           defaultSize='50%'
@@ -41,7 +44,9 @@ class App extends Component {
             <EditorPane loadedValue={this.state.loadedSrc} handleMarkdown={this.updateMarkdown.bind(this)} />
           </div>
           <div className='view-pane'>
-            <ReactMarkdown source={this.state.markdownSrc}/>
+            <div ref={this.printableZone} className='printable-zone'>
+              <ReactMarkdown source={this.state.markdownSrc}/>
+            </div>
           </div>
         </SplitPane>
       </div>
