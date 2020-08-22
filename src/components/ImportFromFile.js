@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-let fileReader;
-
-const handleFileChosen = (file, handleFileRead) => {
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
-    fileReader.readAsText(file);
-}
-
 class ImportFromFile extends Component {
+    handleFileChosen(file, handleFileRead) {
+        let fileReader = new FileReader();
+        fileReader.onloadend = e => handleFileRead(e, file.name);
+        fileReader.readAsText(file);
+    }
+
     render() {
         let handleFileRead = this.props.handleFileRead;
 
@@ -20,7 +18,7 @@ class ImportFromFile extends Component {
                     id='file'
                     className='input-file'
                     accept='.txt'
-                    onChange={e =>  handleFileChosen(e.target.files[0], handleFileRead)}
+                    onChange={e =>  this.handleFileChosen(e.target.files[0], handleFileRead)}
                 />
             </div>
         );
