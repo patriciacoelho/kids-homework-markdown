@@ -6,7 +6,7 @@ require('electron-reload');
 
 let mainWindow;
 
-function createWindow() {
+const createWindow = exports.createWindow = () => {    
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
@@ -14,6 +14,8 @@ function createWindow() {
             nodeIntegration: true,
         },
     });
+    
+    mainWindow.removeMenu();
 
     mainWindow.loadURL(
         isDev
@@ -24,12 +26,7 @@ function createWindow() {
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
-}
-
-// app.setAboutPanelOptions({
-//     applicationName: "Kids Homework Markdown",
-//     applicationVersion: "0.0.1",
-// });
+};
 
 app.on('ready', createWindow);
 
