@@ -27,11 +27,19 @@ class App extends Component {
     const content = e.srcElement.result;
     this.setState({ fileName: fileName });
     this.setState({ loadedSrc: content });
-}
+  }
+
+  handleNewFile() {
+    // Perguntar se não quer salvar antes, se detectar que houve modificação
+    window.location.reload();
+  }
 
   render() {
     return (
       <div className='App'>
+        <Button onClick={this.handleNewFile.bind(this)}>
+          Novo arquivo
+        </Button>
         <ImportFromFile handleFileRead={this.handleFileRead.bind(this)}/>
         <SaveFile fileName={this.state.fileName} fileContent={this.state.markdownSrc} />
         <ExportFile fileName={this.state.fileName} printableZone={this.printableZone.current} />
@@ -53,5 +61,11 @@ class App extends Component {
     );
   }
 }
+
+const Button = ({ onClick, children }) => (
+  <button type="button" onClick={onClick}>
+      {children}
+  </button>
+);
 
 export default App;
