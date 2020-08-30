@@ -30,3 +30,14 @@
   font-size: 16px;
   line-height: 1.5em;
 }
+
+.file-actions {
+  position: fixed;
+  z-index: 2;
+  left: calc(50% - 45px);
+  top: 16px;
+}
+
+.d-none {
+  display: none;
+}
