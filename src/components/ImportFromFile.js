@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import FileOptionIcon from './FileOptionButton';
+
 class ImportFromFile extends Component {
     handleFileChosen(file, handleFileRead) {
         let fileReader = new FileReader();
@@ -12,14 +14,17 @@ class ImportFromFile extends Component {
         let handleFileRead = this.props.handleFileRead;
 
         return (
-            <div className='upload-expanse'>
+            <div className='open-file'>
                 <input
                     type='file'
-                    id='file'
-                    className='input-file'
-                    accept='.txt'
+                    id='open-file-input'
+                    accept='.txt, .md'
+                    className='d-none'
                     onChange={e =>  this.handleFileChosen(e.target.files[0], handleFileRead)}
                 />
+                <label htmlFor="open-file-input">
+                    <FileOptionIcon type='open' onClick={ () => ({}) }/>
+                </label>
             </div>
         );
     }

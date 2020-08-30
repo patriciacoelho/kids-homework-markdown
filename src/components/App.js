@@ -7,6 +7,7 @@ import EditorPane from './EditorPane';
 import ImportFromFile from './ImportFromFile';
 import SaveFile from './SaveFile';
 import ExportFile from './ExportFile';
+import FileOptionIcon from './FileOptionButton';
 
 class App extends Component {
   constructor() {
@@ -37,12 +38,12 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Button onClick={this.handleNewFile.bind(this)}>
-          Novo arquivo
-        </Button>
-        <ImportFromFile handleFileRead={this.handleFileRead.bind(this)}/>
-        <SaveFile fileName={this.state.fileName} fileContent={this.state.markdownSrc} />
-        <ExportFile fileName={this.state.fileName} printableZone={this.printableZone.current} />
+        <div className="file-actions">
+          <FileOptionIcon type='new' onClick={this.handleNewFile.bind(this)} />
+          <ImportFromFile handleFileRead={this.handleFileRead.bind(this)}/>
+          <SaveFile fileName={this.state.fileName} fileContent={this.state.markdownSrc} />
+          <ExportFile fileName={this.state.fileName} printableZone={this.printableZone.current} />
+        </div>
         <SplitPane
           split='vertical'
           defaultSize='50%'
@@ -61,11 +62,5 @@ class App extends Component {
     );
   }
 }
-
-const Button = ({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-      {children}
-  </button>
-);
 
 export default App;

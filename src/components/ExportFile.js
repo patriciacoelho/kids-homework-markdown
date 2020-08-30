@@ -3,35 +3,31 @@ import PropTypes from 'prop-types';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
+import FileOptionIcon from './FileOptionButton';
+
 class ExportFile extends Component {
     handleExportFile() {
-        html2canvas(this.props.printableZone).then((canvas) => {
-            const image = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
-            pdf.addImage(image,'PNG',0,0);
-            pdf.save(`${this.props.fileName}.pdf`);
-        });
+        if (this.props.printableZone) {
+            html2canvas(this.props.printableZone).then((canvas) => {
+                const image = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                pdf.addImage(image,'PNG',0,0);
+                pdf.save(`${this.props.fileName}.pdf`);
+            });
+        }
     }
 
     render() {
         return (
             <div className='download-expanse'>
-                <Button onClick={this.handleExportFile.bind(this)}>
-                    Exportar para PDF
-                </Button>
+                <FileOptionIcon type='export_as_pdf' onClick={this.handleExportFile.bind(this)} />
             </div>
         );
     }
 }
 
-const Button = ({ onClick, children }) => (
-    <button type="button" onClick={onClick}>
-        {children}
-    </button>
-);
-
 ExportFile.propTypes = {
-    printableZone: PropTypes.object.isRequired,
+    printableZone: PropTypes.object,
     fileName: PropTypes.string.isRequired,
 };
 

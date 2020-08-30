@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import FileOptionIcon from './FileOptionButton';
 
 class SaveFile extends Component {
     handleSaveFile() {
@@ -16,19 +17,11 @@ class SaveFile extends Component {
     render() {
         return (
             <div className='download-expanse'>
-                <Button onClick={this.handleSaveFile.bind(this)}>
-                    Clique aqui para salvar
-                </Button>
+                <FileOptionIcon type='save' onClick={this.handleSaveFile.bind(this)} />
             </div>
         );
     }
 }
-
-const Button = ({ onClick, children }) => (
-    <button type="button" onClick={onClick}>
-        {children}
-    </button>
-);
 
 SaveFile.propTypes = {
     fileContent: PropTypes.string.isRequired,
