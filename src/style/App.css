@@ -34,10 +34,25 @@
 .file-actions {
   position: fixed;
   z-index: 2;
-  left: calc(50% - 45px);
+  left: calc(50% - 50px);
   top: 16px;
 }
 
 .d-none {
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background:#33333314;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #939ee0;
+  border-radius: 10px;
 }
