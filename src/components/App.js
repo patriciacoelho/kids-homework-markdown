@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SplitPane from 'react-split-pane';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 import '../style/App.css';
 
 import EditorPane from './EditorPane';
@@ -54,7 +54,7 @@ class App extends Component {
           </div>
           <div className='view-pane'>
             <div ref={this.printableZone} className='printable-zone'>
-              <ReactMarkdown source={this.state.markdownSrc}/>
+              <ReactMarkdown source={this.state.markdownSrc} escapeHtml={false} />
             </div>
           </div>
         </SplitPane>
