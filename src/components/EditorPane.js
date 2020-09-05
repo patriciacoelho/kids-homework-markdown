@@ -5,8 +5,6 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-markdown';
 import 'ace-builds/src-noconflict/theme-solarized_light';
 
-import '../style/SplitPaneResizer.css';
-
 class EditorPane extends Component {
     constructor(){
         super();

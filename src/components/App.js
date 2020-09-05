@@ -47,7 +47,7 @@ class App extends Component {
         <SplitPane
           split='vertical'
           defaultSize='50%'
-          minSize='370'
+          allowResize={false}
         >
           <div className='editor-pane'>
             <EditorPane loadedValue={this.state.loadedSrc} handleMarkdown={this.updateMarkdown.bind(this)} />
