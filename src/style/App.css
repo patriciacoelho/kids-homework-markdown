@@ -1,33 +1,16 @@
 .view-pane {
-  background-color: '#f5f5f5';
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 14px;
-  color: #282c34;
-}
-
-.printable-zone {
-  background-color: '#f5f5f5';
-  color: #282c34;
-  min-height: 297mm;
-  width: 210mm;
-  overflow-x: auto;
+  height: 100vh;
+  width: 50vw;
   overflow-y: auto;
 }
 
-.view-pane > div {
-  position: fixed;
-  top: 57px;
-  right: 0;
-  left: 50%;
-  bottom: 0;
-  overflow: auto;
-  padding: 10px;
-  padding-left: 20px;
-  color: #444;
+.printable-zone {
+  color: #282c34;
+  min-height: 297mm;
+  width: 210mm;
   font-size: 16px;
+  padding: 1.27cm;
+  padding-bottom: 2cm;
   line-height: 1.5em;
 }
 
